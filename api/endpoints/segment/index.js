@@ -29,3 +29,4 @@ Segment.create = function(request) {
 };
 
 module.exports = Segment;
+
