@@ -12,6 +12,11 @@ ContactList.prototype.all = function(customerId, options) {
   return this._request.get(customerId, '/contactlist', options);
 };
 
+ContactList.prototype.get = function(customerId, contactListId, options) {
+  logger.log('contactlist_get');
+  return this._request.get(customerId, '/contactlist/' + contactListId, options);
+};
+
 ContactList.prototype.create = function(customerId, name, contactIds, options) {
   var url = '/contactlist';
   logger.log('contactlist_create');
