@@ -7,6 +7,11 @@ var ContactList = function(request) {
   this._request = request;
 };
 
+ContactList.prototype.all = function(customerId, options) {
+  logger.log('contactlist_all');
+  return this._request.get(customerId, '/contactlist', options);
+};
+
 ContactList.prototype.create = function(customerId, name, contactIds, options) {
   var url = '/contactlist';
   logger.log('contactlist_create');
