@@ -11,6 +11,10 @@ Contact.prototype = {
   create: function(customerId, payload, options) {
     logger.log('contact_create');
     return this._request.post(customerId, '/contact', payload, options);
+  },
+
+  fields: function(customerId) {
+    return this._request.get(customerId, '/field');
   }
 
 };
