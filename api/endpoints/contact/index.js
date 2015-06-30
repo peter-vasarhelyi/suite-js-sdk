@@ -13,6 +13,14 @@ Contact.prototype = {
     return this._request.post(customerId, '/contact', payload, options);
   },
 
+  get: function(customerId, contactIds) {
+    logger.log('contact_get');
+    return this._request.post(customerId, '/contact/getdata', {
+      keyId: 'id',
+      keyValues: contactIds
+    });
+  },
+
   fields: function(customerId) {
     return this._request.get(customerId, '/field');
   }
