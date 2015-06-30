@@ -13,6 +13,11 @@ Contact.prototype = {
     return this._request.post(customerId, '/contact', payload, options);
   },
 
+  update: function(customerId, payload) {
+    logger.log('contact_update');
+    return this._request.put(customerId, '/contact', payload);
+  },
+
   get: function(customerId, contactIds) {
     logger.log('contact_get');
     return this._request.post(customerId, '/contact/getdata', {
@@ -22,6 +27,7 @@ Contact.prototype = {
   },
 
   fields: function(customerId) {
+    logger.log('contact_fields');
     return this._request.get(customerId, '/field');
   }
 
