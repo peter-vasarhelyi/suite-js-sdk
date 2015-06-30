@@ -3,6 +3,9 @@
 var util = require('util');
 var logger = require('logentries-logformat')('suite-sdk');
 
+var OFFSET = 0;
+var LIMIT = 1000000;
+
 var ContactList = function(request) {
   this._request = request;
 };
@@ -28,6 +31,8 @@ ContactList.prototype.create = function(customerId, name, contactIds, options) {
 };
 
 ContactList.prototype.list = function(customerId, contactListId, offset, limit, options) {
+  offset = offset || OFFSET;
+  limit = limit || LIMIT;
   var url = util.format('/contactlist/%s/contacts/?offset=%s&limit=%s', contactListId, offset, limit);
   logger.log('contactlist_list');
   return this._request.get(customerId, url, options);
