@@ -26,9 +26,12 @@ Contact.prototype = {
     });
   },
 
-  fields: function(customerId, language) {
+  fields: function(customerId, options) {
+    options = options || {};
     logger.log('contact_fields');
-    return this._request.get(customerId, '/field/translate/' + (language || 'en'));
+    return this._request.get(customerId, options.language ?
+        '/field/translate/' + options.language :
+        '/field');
   },
 
   fieldChoices: function(customerId, fieldId, language) {
