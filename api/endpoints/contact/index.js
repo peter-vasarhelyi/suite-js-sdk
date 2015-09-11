@@ -26,9 +26,9 @@ Contact.prototype = {
     });
   },
 
-  fields: function(customerId) {
+  fields: function(customerId, language) {
     logger.log('contact_fields');
-    return this._request.get(customerId, '/field');
+    return this._request.get(customerId, '/field/translate/' + (language || 'en'));
   },
 
   fieldChoices: function(customerId, fieldId, language) {
