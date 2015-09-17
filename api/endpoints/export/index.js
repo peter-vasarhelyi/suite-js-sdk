@@ -25,7 +25,9 @@ Export.prototype = {
     offset = offset || OFFSET;
     logger.log('export_results');
     return this._request.get(customerId,
-        '/export/' + exportId + '/data/limit=' + limit + '&offset=' + offset);
+        '/export/' + exportId + '/data/limit=' + limit + '&offset=' + offset, {
+          rawResponse: true
+        });
   },
 
   status: function(customerId, exportId) {
