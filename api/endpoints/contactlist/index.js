@@ -30,6 +30,15 @@ ContactList.prototype.create = function(customerId, name, contactIds, options) {
   }, options);
 };
 
+ContactList.prototype.append = function(customerId, contactListId, contactIds, options) {
+  var url = '/contactlist/' + contactListId + '/add';
+  logger.log('contactlist_append');
+  return this._request.post(customerId, url, {
+    key_id: 'id',
+    external_ids: contactIds
+  }, options);
+};
+
 ContactList.prototype.list = function(customerId, contactListId, offset, limit, options) {
   offset = offset || OFFSET;
   limit = limit || LIMIT;
