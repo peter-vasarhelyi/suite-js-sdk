@@ -26,6 +26,12 @@ Contact.prototype = {
     });
   },
 
+  createField: function(customerId, options) {
+    logger.log('contact_create_field');
+    return this._request.post(customerId, '/field', options);
+  },
+
+
   fields: function(customerId, options) {
     options = options || {};
     logger.log('contact_fields');
