@@ -13,9 +13,12 @@ Contact.prototype = {
     return this._request.post(customerId, '/contact', payload, options);
   },
 
-  update: function(customerId, payload) {
+  update: function(customerId, payload, create_if_not_exists) {
     logger.log('contact_update');
-    return this._request.put(customerId, '/contact', payload);
+    const url = create_if_not_exists === true ?
+        '/contact/create_if_not_exists=1' :
+        '/contact';
+    return this._request.put(customerId, url, payload);
   },
 
   get: function(customerId, keyValues, keyId, fields) {
