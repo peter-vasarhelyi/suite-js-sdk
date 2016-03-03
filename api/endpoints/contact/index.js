@@ -18,12 +18,11 @@ Contact.prototype = {
     return this._request.put(customerId, '/contact', payload);
   },
 
-  get: function(customerId, keyValues, keyId) {
+  get: function(customerId, keyValues, keyId, fields) {
     logger.log('contact_get');
-    return this._request.post(customerId, '/contact/getdata', {
-      keyId: keyId || 'id',
-      keyValues
-    });
+    keyId = keyId || 'id';
+    return this._request.post(customerId, '/contact/getdata', fields ?
+        { keyId, keyValues, fields } : { keyId, keyValues });
   },
 
   createField: function(customerId, options) {
