@@ -1,5 +1,6 @@
 'use strict';
 
+var querystring = require('querystring');
 var logger = require('logentries-logformat')('suite-sdk');
 
 var Contact = function(request) {
@@ -19,6 +20,12 @@ Contact.prototype = {
         '/contact/create_if_not_exists=1' :
         '/contact';
     return this._request.put(customerId, url, payload);
+  },
+
+  query: function(customerId, payload) {
+    logger.log('contact_query');
+    const url = '/contact/query/' + querystring.stringify(payload);
+    return this._request.get(customerId, url);
   },
 
   get: function(customerId, keyValues, keyId, fields) {
